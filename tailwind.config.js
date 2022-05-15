@@ -4,5 +4,10 @@ module.exports = {
   theme: {
     extend: {},
   },
+  safelist: [
+    {
+      pattern: /^elevation/,
+    },
+  ],
   plugins: [require('./plugins/elevation')],
 }
