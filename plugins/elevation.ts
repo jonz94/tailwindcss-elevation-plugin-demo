@@ -1,12 +1,19 @@
 import plugin from 'tailwindcss/plugin'
 
 /**
- * based on https://github.com/angular/components/blob/5d578ef52129345fc93e4b7031655d9665af6b7e/src/material/core/style/_elevation.scss#L41-L65
- *
- * @param {number} zValue
- * @returns
+ * credits: https://catchts.com/range-numbers
  */
-function getUmbra(zValue: number) {
+type ComputeRange<N extends number, Result extends Array<unknown> = []> = Result['length'] extends N
+  ? Result
+  : ComputeRange<N, [...Result, Result['length']]>
+
+/** zValue is 0 ~ 24 */
+type ZValue = ComputeRange<25>[number]
+
+/**
+ * based on https://github.com/angular/components/blob/5d578ef52129345fc93e4b7031655d9665af6b7e/src/material/core/style/_elevation.scss#L41-L65
+ */
+function getUmbra(zValue: ZValue) {
   const umbarMap = {
     0: `0px 0px 0px 0px`,
     1: `0px 2px 1px -1px`,
@@ -41,10 +48,8 @@ function getUmbra(zValue: number) {
 
 /**
  * based on https://github.com/angular/components/blob/5d578ef52129345fc93e4b7031655d9665af6b7e/src/material/core/style/_elevation.scss#L73-L97
- *
- * @param {number} zValue
  */
-function getPenumbra(zValue: number) {
+function getPenumbra(zValue: ZValue) {
   const penumbraMap = {
     0: `0px 0px 0px 0px`,
     1: `0px 1px 1px 0px`,
@@ -79,10 +84,8 @@ function getPenumbra(zValue: number) {
 
 /**
  * based on https://github.com/angular/components/blob/5d578ef52129345fc93e4b7031655d9665af6b7e/src/material/core/style/_elevation.scss#L105-L129
- *
- * @param {number} zValue
  */
-function getAntumbra(zValue: number) {
+function getAntumbra(zValue: ZValue) {
   const antumbraMap = {
     0: `0px 0px 0px 0px`,
     1: `0px 1px 3px 0px`,
@@ -119,7 +122,7 @@ function getAntumbra(zValue: number) {
  * credits: https://stackoverflow.com/a/33352604/9979122
  */
 function getArrayFrom0To24() {
-  return Array.from(Array(25).keys())
+  return Array.from(Array(25).keys()) as ZValue[]
 }
 
 function getUtilites() {
