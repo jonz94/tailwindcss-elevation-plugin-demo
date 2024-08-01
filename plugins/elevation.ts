@@ -1,12 +1,12 @@
-const plugin = require('tailwindcss/plugin')
+import plugin from 'tailwindcss/plugin'
 
 /**
  * based on https://github.com/angular/components/blob/5d578ef52129345fc93e4b7031655d9665af6b7e/src/material/core/style/_elevation.scss#L41-L65
  *
- * @param {string} zValue
+ * @param {number} zValue
  * @returns
  */
-function getUmbra(zValue) {
+function getUmbra(zValue: number) {
   const umbarMap = {
     0: `0px 0px 0px 0px`,
     1: `0px 2px 1px -1px`,
@@ -42,9 +42,9 @@ function getUmbra(zValue) {
 /**
  * based on https://github.com/angular/components/blob/5d578ef52129345fc93e4b7031655d9665af6b7e/src/material/core/style/_elevation.scss#L73-L97
  *
- * @param {string} zValue
+ * @param {number} zValue
  */
-function getPenumbra(zValue) {
+function getPenumbra(zValue: number) {
   const penumbraMap = {
     0: `0px 0px 0px 0px`,
     1: `0px 1px 1px 0px`,
@@ -80,9 +80,9 @@ function getPenumbra(zValue) {
 /**
  * based on https://github.com/angular/components/blob/5d578ef52129345fc93e4b7031655d9665af6b7e/src/material/core/style/_elevation.scss#L105-L129
  *
- * @param {string} zValue
+ * @param {number} zValue
  */
-function getAntumbra(zValue) {
+function getAntumbra(zValue: number) {
   const antumbraMap = {
     0: `0px 0px 0px 0px`,
     1: `0px 1px 3px 0px`,
@@ -135,8 +135,6 @@ function getUtilites() {
   return Object.fromEntries(elevationUtilitiesEntries)
 }
 
-const elevationPlugin = plugin(function ({ addUtilities }) {
+export const elevationPlugin = plugin(function ({ addUtilities }) {
   addUtilities(getUtilites())
 })
-
-module.exports = elevationPlugin
