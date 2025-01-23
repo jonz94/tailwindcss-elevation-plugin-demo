@@ -8,7 +8,7 @@
     "build-only": "vite build",
     "dev": "vite",
     "fmt": "bun run prettier && bun run lint",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "lint": "eslint . --fix",
     "prettier": "prettier --write .",
     "preview": "vite preview",
     "type-check": "vue-tsc --build --force"
