@@ -1,16 +1,15 @@
 {
-  "css.lint.unknownAtRules": "ignore",
-
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.patterns": {
-    "tsconfig.json": "tsconfig.*.json, env.d.ts",
-    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
-    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, bun*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig",
-    "tailwind.config.ts": "postcss.config.js",
+  // tailwindcss
+  "files.associations": {
+    "*.css": "tailwindcss",
   },
+
+  // eslint
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
   },
+
+  // prettier
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 }
